@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ekspedisi Lingkaran — Kuis Matematika XI</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--cyan:#06b6d4;--gold:#fbbf24;--ink:#172033;--muted:#64748b;--paper:#f4f7fb;--white:#fff;--green:#15803d;--red:#b91c1c}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:linear-gradient(135deg,#eaf3ff,#f7f7ff 55%,#e8fbfa);color:var(--ink);min-height:100vh}
+header{background:linear-gradient(110deg,#14213d,#1d4ed8);color:white;padding:24px 18px 30px;text-align:center}
+header .eyebrow{letter-spacing:2px;text-transform:uppercase;font-size:.75rem;color:#bfdbfe;font-weight:800}
+header h1{margin:8px 0;font-size:clamp(1.8rem,5vw,3rem)}header p{margin:0;color:#dbeafe}
+.wrap{width:min(920px,calc(100% - 28px));margin:24px auto 50px}
+.panel{background:white;border:1px solid #e2e8f0;border-radius:20px;padding:clamp(18px,4vw,30px);box-shadow:0 12px 35px #1e3a8a12;margin-bottom:18px}
+h2{margin:0 0 12px;color:var(--navy)}.sub{color:var(--muted);line-height:1.6}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.92rem}input,select{width:100%;padding:13px 14px;border:1.5px solid #cbd5e1;border-radius:11px;font:inherit;background:#fff}input:focus,select:focus{outline:3px solid #bfdbfe;border-color:var(--blue)}
+.btn{border:0;border-radius:12px;padding:13px 20px;font:inherit;font-weight:800;cursor:pointer;background:var(--blue);color:#fff;box-shadow:0 5px 14px #2563eb30}.btn:hover{filter:brightness(1.07)}.btn.secondary{background:#e2e8f0;color:var(--navy);box-shadow:none}.btn:disabled{opacity:.5;cursor:not-allowed}
+.note{background:#eff6ff;border-left:4px solid var(--blue);padding:13px 15px;border-radius:8px;color:#1e3a8a;line-height:1.55;margin:16px 0}
+.hidden{display:none!important}.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:7px 12px;background:#e0f2fe;color:#075985;font-weight:800;font-size:.85rem}.timer{background:#fff7ed;color:#9a3412}.timer.urgent{background:#fee2e2;color:#991b1b}
+.progress{height:10px;background:#e2e8f0;border-radius:99px;overflow:hidden;margin:10px 0 20px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#06b6d4);transition:width .25s}
+.qmeta{color:var(--muted);font-size:.9rem;font-weight:700}.question{font-size:1.2rem;line-height:1.65;font-weight:750;margin:14px 0 20px}.choices{display:grid;gap:10px}.choice{display:flex;align-items:flex-start;gap:11px;text-align:left;padding:14px;border:1.5px solid #dbe3ef;border-radius:13px;background:#fff;color:var(--ink);font:inherit;cursor:pointer}.choice:hover{border-color:#60a5fa;background:#f8fbff}.choice .letter{flex:0 0 27px;height:27px;border-radius:8px;background:#eff6ff;color:#1d4ed8;display:grid;place-items:center;font-weight:900}.choice.selected{border-color:#2563eb;background:#eff6ff}.choice.correct{border-color:#16a34a;background:#f0fdf4}.choice.wrong{border-color:#dc2626;background:#fef2f2}
+.answerrow{display:flex;gap:10px;flex-wrap:wrap}.answerrow input{flex:1;min-width:190px}
+.feedback{padding:16px;border-radius:13px;margin-top:18px;line-height:1.6}.feedback.good{background:#f0fdf4;border:1px solid #86efac}.feedback.bad{background:#fef2f2;border:1px solid #fecaca}.feedback h3{margin:0 0 5px;font-size:1rem}.explain{color:#334155}.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:20px;flex-wrap:wrap}
+.levels{display:flex;gap:7px;flex-wrap:wrap}.level{font-size:.78rem;font-weight:800;padding:6px 10px;border-radius:99px;background:#f1f5f9;color:#64748b}.level.active{background:#dbeafe;color:#1d4ed8}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{background:#f8fafc;border-radius:14px;padding:15px;text-align:center}.stat strong{display:block;font-size:1.55rem;color:#1d4ed8}.stat span{font-size:.82rem;color:var(--muted)}
+.review{border:1px solid #e2e8f0;border-radius:12px;padding:14px;margin:10px 0}.review h4{margin:0 0 7px}.review p{margin:5px 0;color:#475569;line-height:1.5}.tag{font-size:.75rem;font-weight:800;color:#475569;background:#f1f5f9;padding:4px 8px;border-radius:99px}
+footer{text-align:center;color:#64748b;font-size:.83rem;padding:0 15px 25px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.question{font-size:1.08rem}.navrow .btn{flex:1}}
+</style>
+</head>
+<body>
+<header><div class="eyebrow">Matematika • Kelas XI SMA</div><h1>🧭 Ekspedisi Lingkaran</h1><p>Taklukkan 4 level, pecahkan 40 tantangan, raih gelar Ahli Lingkaran!</p></header>
+<main class="wrap">
+<section id="start" class="panel">
+<h2>🚀 Siap memulai ekspedisi?</h2>
+<p class="sub">Isi identitas terlebih dahulu. Kuis terdiri dari 30 pilihan ganda dan 10 jawaban singkat. Waktu pengerjaan 30 menit.</p>
+<div class="grid">
+<div class="field"><label for="student">Nama lengkap</label><input id="student" placeholder="Tulis nama lengkap" autocomplete="name"></div>
+<div class="field"><label for="kelas">Kelas</label><select id="kelas"><option value="">Pilih kelas</option><option>XI A</option><option>XI B</option><option>XI C</option><option>XI D</option><option>XI E</option><option>XI F</option><option>XI lainnya</option></select></div>
+<div class="field full"><label for="presence">Presensi</label><select id="presence"><option value="">Pilih status kehadiran</option><option value="Hadir">Hadir</option><option value="Izin">Izin</option><option value="Tidak hadir">Tidak hadir</option></select></div>
+</div>
+<div class="note"><b>Petunjuk:</b> Gunakan π = 22/7 jika jari-jari atau diameter kelipatan 7, dan π = 3,14 untuk nilai lainnya, kecuali soal menyebutkan berbeda. Untuk jawaban singkat, masukkan angka saja (boleh menggunakan koma atau titik desimal). Setiap soal bernilai 2,5 poin. Jawaban dapat diperiksa satu kali.</div>
+<button class="btn" id="startBtn">Mulai petualangan →</button>
+</section>
+<section id="game" class="panel hidden">
+<div class="topline"><div class="levels" id="levels"></div><div class="pill timer" id="timer">⏱ 30:00</div></div>
+<div class="topline"><span class="qmeta" id="qcount">Soal 1 dari 40</span><span class="pill" id="scoreLive">Skor sementara: 0</span></div>
+<div class="progress"><div id="progressFill"></div></div>
+<div class="qmeta" id="category"></div>
+<div class="question" id="question"></div>
+<div id="response"></div>
+<div id="feedback" class="hidden"></div>
+<div class="navrow"><button class="btn secondary" id="prevBtn">← Sebelumnya</button><button class="btn" id="checkBtn">Periksa jawaban</button><button class="btn hidden" id="nextBtn">Soal berikutnya →</button></div>
+</section>
+<section id="result" class="panel hidden">
+<h2>🏁 Ekspedisi selesai!</h2><p class="sub" id="studentResult"></p>
+<div class="stats"><div class="stat"><strong id="finalScore">0</strong><span>Nilai akhir</span></div><div class="stat"><strong id="correctCount">0/40</strong><span>Jawaban benar</span></div><div class="stat"><strong id="timeUsed">00:00</strong><span>Waktu digunakan</span></div></div>
+<h3 id="gradeTitle"></h3><p id="evaluation" class="sub"></p>
+<h3>📌 Evaluasi berdasarkan materi</h3><div id="topicEval"></div>
+<h3>🔎 Tinjau jawaban dan pembahasan</h3><div id="reviewList"></div>
+<button class="btn" onclick="window.print()">Cetak hasil / Simpan PDF</button>
+<button class="btn secondary" onclick="location.reload()">Ulangi kuis</button>
+</section>
+</main>
+<footer>Belajar dengan teliti: tulis satuan pada proses perhitungan dan periksa kembali apakah hasil masuk akal.</footer>
+<script>
+const questions = [
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Sebuah taman berbentuk lingkaran memiliki diameter 28 m. Pengelola akan menutup seluruh permukaannya dengan rumput sintetis. Berapa luas taman tersebut?',o:['154 m²','308 m²','616 m²','1.232 m²'],a:2,e:'Jari-jari = 28 ÷ 2 = 14 m. Luas = πr² = 22/7 × 14² = 616 m².'},
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Sebuah meja bundar memiliki jari-jari 35 cm. Kaca akan dipasang menutupi seluruh permukaan meja. Luas kaca minimum yang diperlukan adalah ...',o:['1.100 cm²','2.750 cm²','3.850 cm²','7.700 cm²'],a:2,e:'L = 22/7 × 35² = 22/7 × 1.225 = 3.850 cm².'},
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Kolam berbentuk lingkaran berdiameter 10 m akan diberi ubin. Dengan π = 3,14, luas permukaan kolam adalah ...',o:['31,4 m²','62,8 m²','78,5 m²','314 m²'],a:2,e:'r = 5 m. L = 3,14 × 5² = 78,5 m².'},
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Sebuah pizza berdiameter 30 cm dipotong dan seluruh permukaannya dibagi rata. Luas pizza sebelum dipotong (π = 3,14) adalah ...',o:['188,4 cm²','353,25 cm²','706,5 cm²','2.826 cm²'],a:2,e:'r = 15 cm. L = 3,14 × 225 = 706,5 cm².'},
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Sebuah lintasan bundar memiliki luas 1.386 m². Jika π = 22/7, jari-jari lintasan tersebut adalah ...',o:['14 m','21 m','28 m','42 m'],a:1,e:'1.386 = 22/7 × r², sehingga r² = 441 dan r = 21 m.'},
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Diameter sebuah tutup tangki diperbesar dari 20 cm menjadi 40 cm. Perbandingan luas tutup baru terhadap luas semula adalah ...',o:['2 : 1','3 : 1','4 : 1','8 : 1'],a:2,e:'Luas sebanding dengan kuadrat diameter. (40/20)² = 4, jadi 4 : 1.'},
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Sebuah lapangan berbentuk lingkaran berjari-jari 14 m. Di bagian tengah dibuat kolam bundar berjari-jari 7 m. Luas daerah lapangan di luar kolam adalah ...',o:['154 m²','308 m²','462 m²','616 m²'],a:2,e:'Luas cincin = π(14² − 7²) = 22/7 × 147 = 462 m².'},
+{type:'mc',level:1,topic:'Luas lingkaran',q:'Sebuah piring bundar memiliki luas 314 cm². Dengan π = 3,14, diameter piring adalah ...',o:['10 cm','14 cm','20 cm','28 cm'],a:2,e:'314 = 3,14r², maka r² = 100, r = 10 cm dan diameter = 20 cm.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Roda bianglala berjari-jari 21 m berputar sehingga sebuah kabin menempuh sudut pusat 120°. Panjang lintasan busur yang ditempuh kabin adalah ...',o:['22 m','33 m','44 m','66 m'],a:2,e:'s = 120/360 × 2πr = 1/3 × 2 × 22/7 × 21 = 44 m.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Jarum menit sebuah jam panjangnya 14 cm. Ujung jarum bergerak dari angka 12 ke angka 4. Panjang lintasan ujung jarum adalah ...',o:['14⅔ cm','22 cm','29⅓ cm','44 cm'],a:2,e:'Sudut = 4 × 30° = 120°. s = 120/360 × 2 × 22/7 × 14 = 29⅓ cm.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Pada roda berjari-jari 10 cm, sebuah tanda di tepi bergerak menempuh sudut 72°. Dengan π = 3,14, panjang busurnya adalah ...',o:['6,28 cm','12,56 cm','15,70 cm','31,4 cm'],a:1,e:'s = 72/360 × 2 × 3,14 × 10 = 12,56 cm.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Sebuah lintasan melingkar memiliki jari-jari 28 m. Peserta berlari pada busur dengan sudut pusat 45°. Jarak yang ditempuh adalah ...',o:['11 m','22 m','44 m','88 m'],a:1,e:'s = 45/360 × 2 × 22/7 × 28 = 22 m.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Busur AB sepanjang 11 cm berada pada lingkaran berjari-jari 21 cm. Besar sudut pusat yang menghadap busur AB adalah ...',o:['15°','30°','45°','60°'],a:1,e:'Keliling = 2 × 22/7 × 21 = 132 cm. Sudut = 11/132 × 360° = 30°.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Sebuah busur merupakan 1/8 bagian dari keliling lingkaran berjari-jari 14 cm. Panjang busur itu adalah ...',o:['5,5 cm','11 cm','22 cm','44 cm'],a:1,e:'Keliling = 2 × 22/7 × 14 = 88 cm. Seperdelapan keliling = 11 cm.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Sebuah lintasan lari berbentuk lingkaran berdiameter 70 m. Seorang atlet menempuh 3/4 putaran. Jarak yang ditempuh adalah ...',o:['110 m','140 m','165 m','220 m'],a:2,e:'Keliling = 22/7 × 70 = 220 m. Jarak = 3/4 × 220 = 165 m.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Pada lingkaran yang sama, busur dengan sudut pusat 50° panjangnya 15 cm. Panjang busur yang bersesuaian dengan sudut 120° adalah ...',o:['25 cm','30 cm','36 cm','45 cm'],a:2,e:'Panjang busur sebanding dengan sudut pusat: 15 × 120/50 = 36 cm.'},
+{type:'mc',level:2,topic:'Panjang busur',q:'Sebuah roda berjari-jari 35 cm berputar 0,4 putaran. Jarak yang ditempuh titik pada tepi roda adalah ...',o:['44 cm','66 cm','88 cm','110 cm'],a:2,e:'Keliling = 2 × 22/7 × 35 = 220 cm. Jarak = 0,4 × 220 = 88 cm.'},
+{type:'mc',level:3,topic:'Luas juring',q:'Sebuah taman berbentuk lingkaran berjari-jari 14 m. Sebanyak 90° bagian taman ditanami bunga. Luas area bunga adalah ...',o:['77 m²','154 m²','308 m²','616 m²'],a:1,e:'L juring = 90/360 × 22/7 × 14² = 154 m².'},
+{type:'mc',level:3,topic:'Luas juring',q:'Potongan pizza berbentuk juring memiliki sudut pusat 45° dan jari-jari 28 cm. Luas potongan pizza tersebut adalah ...',o:['154 cm²','308 cm²','616 cm²','1.232 cm²'],a:1,e:'L = 45/360 × 22/7 × 28² = 308 cm².'},
+{type:'mc',level:3,topic:'Luas juring',q:'Sebuah sprinkler menyiram daerah berbentuk juring dengan jari-jari 7 m dan sudut 120°. Luas daerah yang tersiram adalah ...',o:['38⅔ m²','51⅓ m²','77 m²','154 m²'],a:1,e:'L = 120/360 × 22/7 × 49 = 154/3 = 51⅓ m².'},
+{type:'mc',level:3,topic:'Luas juring',q:'Luas sebuah juring adalah 77 cm² pada lingkaran berjari-jari 14 cm. Besar sudut pusat juring itu adalah ...',o:['30°','45°','60°','90°'],a:1,e:'L lingkaran = 616 cm². Fraksi = 77/616 = 1/8, sehingga sudut = 45°.'},
+{type:'mc',level:3,topic:'Luas juring',q:'Sebuah kue bundar berjari-jari 21 cm dipotong menjadi bagian dengan sudut pusat 40°. Luas satu potong kue adalah ...',o:['77 cm²','154 cm²','231 cm²','462 cm²'],a:1,e:'L = 40/360 × 22/7 × 21² = 154 cm².'},
+{type:'mc',level:3,topic:'Luas juring',q:'Sebuah taman bundar berjari-jari 10 m memiliki area bermain berbentuk juring 144°. Dengan π = 3,14, luas area bermain adalah ...',o:['62,8 m²','94,2 m²','125,6 m²','157 m²'],a:2,e:'L = 144/360 × 3,14 × 100 = 125,6 m².'},
+{type:'mc',level:3,topic:'Luas juring',q:'Dua juring pada lingkaran yang sama memiliki sudut pusat 72° dan 108°. Jika luas juring pertama 40 cm², luas juring kedua adalah ...',o:['50 cm²','60 cm²','72 cm²','80 cm²'],a:1,e:'Luas sebanding dengan sudut: 40 × 108/72 = 60 cm².'},
+{type:'mc',level:3,topic:'Luas juring',q:'Sebuah lahan bundar luasnya 1.386 m². Area untuk kebun sayur merupakan juring 120°. Luas kebun sayur adalah ...',o:['231 m²','462 m²','616 m²','924 m²'],a:1,e:'L juring = 120/360 × 1.386 = 462 m².'},
+{type:'mc',level:4,topic:'Gabungan konsep',q:'Sebuah lintasan berbentuk lingkaran berjari-jari 21 m. Pagar akan dipasang hanya pada busur 240°. Panjang pagar yang dibutuhkan adalah ...',o:['44 m','66 m','88 m','132 m'],a:2,e:'s = 240/360 × 2 × 22/7 × 21 = 88 m.'},
+{type:'mc',level:4,topic:'Gabungan konsep',q:'Kolam bundar berjari-jari 14 m memiliki zona dangkal berupa juring 135°. Luas zona dangkal adalah ...',o:['154 m²','231 m²','308 m²','462 m²'],a:1,e:'L = 135/360 × 22/7 × 196 = 231 m².'},
+{type:'mc',level:4,topic:'Gabungan konsep',q:'Sebuah taman bundar berjari-jari 28 m. Di sekelilingnya dibuat jalan melengkung sepanjang 3/8 keliling. Panjang jalan itu adalah ...',o:['44 m','55 m','66 m','88 m'],a:2,e:'Keliling = 2 × 22/7 × 28 = 176 m. 3/8 × 176 = 66 m.'},
+{type:'mc',level:4,topic:'Gabungan konsep',q:'Sebuah lahan berbentuk lingkaran berjari-jari 14 m. Juring 90° dipakai untuk kios, sisanya untuk taman. Luas taman adalah ...',o:['154 m²','308 m²','462 m²','539 m²'],a:2,e:'L total = 616 m². Kios 1/4 = 154 m². Sisa taman = 616 − 154 = 462 m².'},
+{type:'mc',level:4,topic:'Gabungan konsep',q:'Sebuah roda berdiameter 1,4 m berputar 25 kali. Jika tidak terjadi selip, jarak tempuh roda adalah ...',o:['55 m','88 m','110 m','140 m'],a:2,e:'Keliling = 22/7 × 1,4 = 4,4 m. Jarak = 25 × 4,4 = 110 m.'},
+{type:'mc',level:4,topic:'Gabungan konsep',q:'Sebuah papan bundar berjari-jari 14 cm dicat pada juring 225°. Luas bagian yang dicat adalah ...',o:['308 cm²','385 cm²','462 cm²','539 cm²'],a:1,e:'L = 225/360 × 616 = 385 cm².'},
+{type:'short',level:4,topic:'Luas lingkaran',q:'Sebuah kolam bundar memiliki diameter 42 m. Hitung luas permukaan kolam dalam m². Gunakan π = 22/7.',a:1386,unit:'m²',tol:0,e:'r = 21 m. L = 22/7 × 21² = 1.386 m².'},
+{type:'short',level:4,topic:'Panjang busur',q:'Sebuah lintasan melingkar berjari-jari 14 m dilalui pelari pada sudut pusat 135°. Berapa meter panjang busur yang ditempuh?',a:33,unit:'m',tol:0,e:'s = 135/360 × 2 × 22/7 × 14 = 33 m.'},
+{type:'short',level:4,topic:'Luas juring',q:'Sebuah taman berjari-jari 21 m memiliki area bermain dengan sudut pusat 80°. Hitung luas area bermain dalam m².',a:308,unit:'m²',tol:0,e:'L = 80/360 × 22/7 × 21² = 308 m².'},
+{type:'short',level:4,topic:'Panjang busur',q:'Panjang busur suatu lingkaran adalah 22 cm dan jari-jarinya 21 cm. Tentukan sudut pusatnya dalam derajat.',a:60,unit:'derajat',tol:0,e:'Keliling = 132 cm. Sudut pusat = 22/132 × 360° = 60°.'},
+{type:'short',level:4,topic:'Luas juring',q:'Luas juring sebuah lingkaran adalah 154 cm² dan sudut pusatnya 90°. Tentukan jari-jari lingkaran (dalam cm).',a:14,unit:'cm',tol:0,e:'L lingkaran = 154 × 4 = 616 cm². πr² = 616, dengan π = 22/7 diperoleh r² = 196 sehingga r = 14 cm.'},
+{type:'short',level:4,topic:'Gabungan konsep',q:'Sebuah taman lingkaran berjari-jari 28 m. Sebanyak 135° bagian digunakan untuk area bermain. Berapa luas bagian taman yang tersisa dalam m²?',a:1540,unit:'m²',tol:0,e:'L total = 22/7 × 28² = 2.464 m². Bagian tersisa = 225/360 = 5/8. Luas sisa = 5/8 × 2.464 = 1.540 m².'},
+{type:'short',level:4,topic:'Panjang busur',q:'Sebuah roda berjari-jari 35 cm berputar sebanyak 1,5 putaran. Berapa cm jarak yang ditempuh titik pada tepi roda?',a:330,unit:'cm',tol:0,e:'Keliling roda = 2 × 22/7 × 35 = 220 cm. Jarak = 1,5 × 220 = 330 cm.'},
+{type:'short',level:4,topic:'Luas juring',q:'Sebuah pizza berjari-jari 14 cm dipotong menjadi juring dengan sudut 135°. Hitung luas potongan pizza tersebut dalam cm².',a:231,unit:'cm²',tol:0,e:'L = 135/360 × 22/7 × 14² = 231 cm².'},
+{type:'short',level:4,topic:'Gabungan konsep',q:'Sebuah lintasan berbentuk lingkaran memiliki keliling 176 m. Pelari menempuh busur sepanjang 66 m. Berapa besar sudut pusat yang bersesuaian?',a:135,unit:'derajat',tol:0,e:'Sudut pusat = 66/176 × 360° = 135°.'},
+{type:'short',level:4,topic:'Luas lingkaran',q:'Luas sebuah lingkaran adalah 1.256 cm². Dengan π = 3,14, tentukan jari-jari lingkaran dalam cm.',a:20,unit:'cm',tol:0,e:'1.256 = 3,14r², sehingga r² = 400 dan r = 20 cm.'}
+];
+// Correct two intentionally checked arithmetic keys in the source data:
+questions[10].a = 1; // 72° of circumference 62.8 cm = 12.56 cm, option B
+questions[30].a = 1; // 225° sector of 616 = 385 cm², option B
+questions[36].a = 1540; // remaining 225° of 2464 m²
+let answers=Array(questions.length).fill(null), checked=Array(questions.length).fill(false), current=0, startedAt=0, remaining=1800, timerId=null, finished=false;
+const $=id=>document.getElementById(id);
+function fmt(t){return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')}
+function levelName(n){return ['Pemula','Penjelajah','Ahli Juring','Master Lingkaran'][n-1]}
+function startGame(){
+ if(!$('student').value.trim()||!$('kelas').value||!$('presence').value){alert('Lengkapi nama, kelas, dan presensi terlebih dahulu.');return}
+ $('start').classList.add('hidden');$('game').classList.remove('hidden');startedAt=Date.now();
+ timerId=setInterval(()=>{remaining--; $('timer').textContent='⏱ '+fmt(remaining);if(remaining<=120)$('timer').classList.add('urgent');if(remaining<=0)finish(true)},1000);
+ render();
+}
+function render(){
+ const q=questions[current], lev=q.level;
+ $('qcount').textContent=`Soal ${current+1} dari ${questions.length}`;
+ $('scoreLive').textContent='Skor sementara: '+(checked.filter(Boolean).reduce((s,v,i)=>s+(v&&isCorrect(i)?2.5:0),0)).toFixed(1);
+ $('progressFill').style.width=((current+1)/questions.length*100)+'%';
+ $('category').textContent=`LEVEL ${lev} • ${levelName(lev)}  |  ${q.topic}  |  ${q.type==='mc'?'Pilihan ganda':'Jawaban singkat'}`;
+ $('levels').innerHTML=[1,2,3,4].map(n=>`<span class="level ${n===lev?'active':''}">${n}. ${levelName(n)}</span>`).join('');
+ $('question').textContent=q.q;
+ $('prevBtn').disabled=current===0;
+ $('response').innerHTML='';
+ if(q.type==='mc'){
+  const letters=['A','B','C','D'];$('response').innerHTML='<div class="choices">'+q.o.map((v,i)=>`<button class="choice ${answers[current]===i?'selected':''}" data-i="${i}" ${checked[current]?'disabled':''}><span class="letter">${letters[i]}</span><span>${v}</span></button>`).join('')+'</div>';
+  $('response').querySelectorAll('.choice').forEach(b=>b.onclick=()=>{if(!checked[current]){answers[current]=+b.dataset.i;renderChoices()}});
+ }else{
+  $('response').innerHTML=`<div class="answerrow"><input id="shortAnswer" inputmode="decimal" placeholder="Masukkan jawaban angka" value="${answers[current]??''}" ${checked[current]?'disabled':''}><span class="pill">Satuan: ${q.unit}</span></div>`;
+  $('shortAnswer').addEventListener('input',e=>answers[current]=e.target.value);
+ }
+ $('feedback').classList.add('hidden');$('feedback').innerHTML='';
+ if(checked[current])showFeedback();
+ $('checkBtn').classList.toggle('hidden',checked[current]);$('nextBtn').classList.toggle('hidden',!checked[current]);
+ $('nextBtn').textContent=current===questions.length-1?'Lihat hasil →':'Soal berikutnya →';
+}
+function renderChoices(){document.querySelectorAll('.choice').forEach(b=>b.classList.toggle('selected',+b.dataset.i===answers[current]))}
+function isCorrect(i){
+ const q=questions[i],a=answers[i];if(a===null||a==='')return false;
+ if(q.type==='mc')return a===q.a;
+ const n=Number(String(a).replace(',','.').replace(/\s/g,''));
+ return Number.isFinite(n)&&Math.abs(n-q.a)<=(q.tol||0.01);
+}
+function check(){
+ if(answers[current]===null||answers[current]===''){alert('Pilih atau isi jawaban terlebih dahulu.');return}
+ checked[current]=true;showFeedback();
+ $('checkBtn').classList.add('hidden');$('nextBtn').classList.remove('hidden');
+ $('scoreLive').textContent='Skor sementara: '+(checked.reduce((s,v,i)=>s+(v&&isCorrect(i)?2.5:0),0)).toFixed(1);
+}
+function showFeedback(){
+ const q=questions[current],ok=isCorrect(current),fb=$('feedback');
+ fb.className='feedback '+(ok?'good':'bad');fb.classList.remove('hidden');
+ let correct=q.type==='mc'?q.o[q.a]:`${q.a} ${q.unit}`;
+ fb.innerHTML=`<h3>${ok?'✓ Tepat!':'✗ Belum tepat.'}</h3><div>${ok?'Jawabanmu benar. Kamu memperoleh 2,5 poin.':`Jawaban yang diharapkan: <b>${correct}</b>.`}</div><p class="explain"><b>Pembahasan:</b> ${q.e}</p>`;
+ if(q.type==='mc')document.querySelectorAll('.choice').forEach((b,i)=>{b.disabled=true;if(i===q.a)b.classList.add('correct');if(i===answers[current]&&!ok)b.classList.add('wrong')});
+}
+function next(){if(current<questions.length-1){current++;render()}else finish(false)}
+function finish(timeout=false){
+ if(finished)return;finished=true;clearInterval(timerId);
+ const elapsed=Math.min(1800,Math.floor((Date.now()-startedAt)/1000));
+ $('game').classList.add('hidden');$('result').classList.remove('hidden');
+ const correct=questions.filter((q,i)=>checked[i]&&isCorrect(i)).length,score=correct*2.5;
+ $('studentResult').textContent=`${$('student').value} • ${$('kelas').value} • Presensi: ${$('presence').value}${timeout?' • Waktu habis':''}`;
+ $('finalScore').textContent=score.toFixed(1);$('correctCount').textContent=correct+'/40';$('timeUsed').textContent=fmt(elapsed);
+ let title=score>=85?'🏆 Sangat baik!':score>=70?'🌟 Baik!':score>=55?'👍 Cukup': '📚 Ayo berlatih lagi!';
+ $('gradeTitle').textContent=title;
+ $('evaluation').textContent=score>=85?'Penguasaan materi sudah kuat. Pertahankan ketelitian, dan tantang dirimu dengan soal lingkaran yang lebih kompleks.':score>=70?'Pemahamanmu sudah baik. Perkuat kembali materi yang masih keliru, terutama pemilihan rumus dan konversi sudut.':score>=55?'Kamu sudah memahami sebagian konsep. Ulangi latihan menghitung luas, panjang busur, dan luas juring; tulis langkah hitung secara runtut.':'Jangan menyerah. Pelajari kembali hubungan sudut pusat dengan 360°, keliling, dan luas lingkaran. Kerjakan latihan bertahap dari soal dasar.';
+ const topics={};questions.forEach((q,i)=>{if(!topics[q.topic])topics[q.topic]={right:0,total:0};topics[q.topic].total++;if(checked[i]&&isCorrect(i))topics[q.topic].right++});
+ $('topicEval').innerHTML=Object.entries(topics).map(([t,v])=>`<div class="review"><b>${t}</b><p>${v.right} dari ${v.total} benar (${Math.round(v.right/v.total*100)}%). ${v.right===v.total?'Pertahankan!':v.right/v.total>=.7?'Cukup baik, tingkatkan ketelitian.':'Perlu dipelajari dan dilatih kembali.'}</p></div>`).join('');
+ $('reviewList').innerHTML=questions.map((q,i)=>`<div class="review"><h4>Soal ${i+1} <span class="tag">${q.topic}</span> <span class="tag">${checked[i]&&isCorrect(i)?'Benar':'Perlu ditinjau'}</span></h4><p>${q.q}</p><p><b>Jawabanmu:</b> ${answers[i]===null||answers[i]===''?'Tidak dijawab':q.type==='mc'?q.o[answers[i]]:answers[i]+' '+q.unit}</p><p><b>Kunci:</b> ${q.type==='mc'?q.o[q.a]:q.a+' '+q.unit}</p><p><b>Pembahasan:</b> ${q.e}</p></div>`).join('');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+$('startBtn').onclick=startGame;$('checkBtn').onclick=check;$('nextBtn').onclick=next;$('prevBtn').onclick=()=>{if(current>0){current--;render()}};
+</script>
+</body></html>
